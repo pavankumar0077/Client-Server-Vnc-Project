@@ -5,10 +5,10 @@ FROM openjdk:17-jdk-slim
 VOLUME /tmp
 
 # Expose the port your Spring Boot application uses (change if needed)
-EXPOSE 9901
+EXPOSE 9902
 
 # Define an argument for the JAR file
-ARG JAR_FILE=target/Account-Service-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/User-Login-0.0.1-SNAPSHOT.jar
 
 # Copy the JAR file into the container as "app.jar"
 ADD ${JAR_FILE} app.jar
