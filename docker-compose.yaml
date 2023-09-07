@@ -1,0 +1,21 @@
+version: '3.8'  # Use the appropriate version for your Docker Compose file
+
+services:
+  # Spring Boot Application - Account Service
+  account-service:
+    image: pavan0077/account-service-image:v1  # Pull the image from Docker Hub
+    container_name: account-service
+    ports:
+      - "9901:9901"  # Map the container's port to the host (adjust as needed)
+    environment:
+      - SPRING_PROFILES_ACTIVE=production
+
+  # Spring Boot Application - User Login
+  user-login:
+    image: pavan0077/login-service:latest  # Pull the image from Docker Hub
+    container_name: user-login
+    ports:
+      - "9902:9902"  # Map the container's port to the host (adjust as needed)
+    depends_on:
+      - account-service  # You can keep this if user-login depends on account-service
+

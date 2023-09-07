@@ -1,0 +1,3 @@
+-- init.sql
+CREATE DATABASE IF NOT EXISTS users_info;
+CREATE DATABASE IF NOT EXISTS accounts_info;
