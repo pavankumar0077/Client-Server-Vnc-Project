@@ -1,0 +1,54 @@
+version: '3.8'  # Use the appropriate version for your Docker Compose file
+
+services:
+  # mysql db connection
+
+  db:
+    image: mysql:latest
+    container_name: mysql-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=iDRBT@007
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      comm:
+        ipv4_address: 172.18.0.2
+
+  # Spring Boot Application - Account Service
+  account-service:
+    image: pavan0077/account-service-image:v1  # Pull the image from Docker Hub
+    container_name: account-service
+    hostname: account
+    ports:
+      - "9901:9901"  # Map the container's port to the host (adjust as needed)
+    depends_on:
+      - mysql-db
+    environment:
+      - SPRING_PROFILES_ACTIVE=production
+    networks:
+      comm:
+        ipv4_address: 172.18.0.3
+
+  # Spring Boot Application - User Login
+  user-login:
+    image: pavan0077/login-service:latest  # Pull the image from Docker Hub
+    container_name: user-login
+    hostname: login
+    ports:
+      - "9902:9902"  # Map the container's port to the host (adjust as needed)
+    depends_on:
+      - mysql-db
+      - account-service  # You can keep this if user-login depends on account-service
+
+    networks:
+      comm:
+        ipv4_address: 172.18.0.4
+
+networks:
+   
+    comm:
+      ipam:
+        config:
+          - subnet: 172.18.0.0/16
