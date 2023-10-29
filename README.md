@@ -1,12 +1,28 @@
 # Banking Application in VNC
 
+## Abstract
+PUBSEC - Platform Independent, Usable, Backward Compatible, Secure
+
+### Enterprises increasingly leverage mobile applications
+to scale their business and improve the reach of consumers.
+Besides functional changes, these applications must overcome
+challenges such as diverse platforms, backward and forward
+compatibility, and poor cyber hygiene on end-user devices.
+This work presents a novel framework for the mobile app
+ecosystem that improves platform independence, compatibility
+and security. The framework utilizes multi-access edge computing
+(MEC) to offload a mobile app’s multiple features (services)
+to the edge. Analysis shows that this approach provides better
+security when compared with the traditional approach while
+also achieving platform independence and reducing compatibility
+issues.
+
 ## Required services 
 1) Account-Service docker image
 2) User-Login-Inter-Com docker image
 3) Mysql docker image
 4) Vnc server docker image
 5) Android application
-
 
 ## To Set up and Run Mysql DB
 
